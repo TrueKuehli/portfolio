@@ -1,0 +1,218 @@
+papers:
+  - id: "hand-redirection"
+    title: "Instant Hand Redirection in Virtual Reality Through Electrical Muscle Stimulation-Triggered Eye Blinks"
+    authors:
+      - name: "Colin Groth"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://colingroth.github.io/"
+      - name: "Timon Scholz"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+      - name: "Susana Castillo"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/castillo"
+      - name: "Jan-Philipp Tauscher"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/tauscher"
+      - name: "Marcus Magnor"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/magnor"
+    abstract: "In this paper, we investigate the use of electrical muscle stimulation (EMS) to trigger eye blinks 
+        for instant hand redirection in virtual reality (VR). With the rapid development of VR technology and 
+        increasing user expectations for realistic experiences, maintaining a seamless match between real and 
+        virtual objects becomes crucial for immersive interactions. However, hand movements are fast and sometimes 
+        unpredictable, increasing the need for instantaneous redirection. We introduce EMS to the field of hand 
+        redirection in VR through precise stimulation of the eyelid muscles. By exploiting the phenomenon of change 
+        blindness through natural eye blinks, our novel stimulation model achieves instantaneous, imperceptible 
+        hand redirection without the need for eye tracking. We first empirically validate the efficiency of our EMS 
+        model in eliciting full eye closure. In a second experiment, we demonstrate the feasibility of using such a 
+        technique for seamless instantaneous displacement in VR and its particular impact for hand redirection. 
+        Among other factors, our analysis also delves into the under-explored domain of gender influence on hand 
+        redirection techniques, revealing significant gender-based performance disparities."
+    short_abstract: "We propose a method for instant hand redirection in VR using electrical muscle stimulation (EMS) 
+        to trigger eye blinks, enabling seamless interaction between real and virtual objects."
+    journal: "ACM Symposium on Virtual Reality Software and Technology (VRST)"
+    publication_date: "2023"
+    categories:
+      - "Perception"
+      - "Virtual Reality"
+    keywords:
+      - "Hand redirection"
+      - "EMS"
+      - "Virtual reality"
+      - "Redirection"
+      - "VR"
+      - "Eye blinks"
+    links:
+      Video: "https://www.youtube.com/watch?v=TGZYa9tAVPQ"
+      Paper: "https://colingroth.github.io/papers/Groth23_handRedirection.pdf"
+    thumbnail:
+      img: "./hand-redirection/teaser.jpg"
+      # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      alt: "Person wearing a VR headset, reaching their hand out to touch a virtual object not visible 
+          in the real world."
+  - id: "underwater-tone-mapping"
+    title: "Optimizing Temporal Stability in Underwater Video Tone Mapping"
+    authors:
+      - name: "Matthias Franz"
+        affiliation: "Technische Universität<br>Braunschweig"
+      - name: "Bill Matthias Thang"
+        affiliation: "Technische Universität<br>Braunschweig"
+      - name: "Pascal Sackhoff"
+        affiliation: "Technische Universität<br>Braunschweig"
+      - name: "Timon Scholz"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+      - name: "Jannis Malte Möller"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/moller"
+      - name: "Steve Grogorick"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/grogorick"
+      - name: "Martin Eisemann"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/eisemann"
+    abstract: "In this paper, we present an approach for temporal stabilization of depth-based underwater 
+        image tone mapping methods for application to monocular RGB video. Typically, the goal is to improve 
+        the colors of focused objects, while leaving more distant regions nearly unchanged, to preserve the 
+        underwater look-and-feel of the overall image. To do this, many methods rely on estimated depth to 
+        control the recolorization process, i.e., to enhance colors (reduce blue tint) only for objects close 
+        to the camera. However, while single-view depth estimation is usually consistent within a frame, it 
+        often suffers from inconsistencies across sequential frames, resulting in color fluctuations during 
+        tone mapping. We propose a simple yet effective inter-frame stabilization of the computed depth maps 
+        to achieve stable tone mapping results. The evaluation of eight test sequences shows the effectiveness 
+        in a wide range of underwater scenarios."
+    short_abstract: "We present a method for temporal stabilization of depth-based underwater image tone 
+        mapping methods for application to monocular RGB video, improving color consistency across frames."
+    journal: "Proc. Vision, Modeling and Visualization (VMV)"
+    publication_date: "2023"
+    is_oral_presentation: false
+    is_poster: true
+    keywords:
+      - "Perception"
+      - "Image processing"
+    categories:
+      - "Perception"
+    links:
+      Video: "https://youtu.be/4qd1iyRo3VQ"
+      Paper: "https://diglib.eg.org/handle/10.2312/vmv20231239"
+    # TODO:      Slides: "https://example.com/slides1.pdf"
+    thumbnail:
+      img: "./underwater/teaser.jpg"
+      # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      alt: "Two pictures of a coral reef, showcasing the instability of traditional tone-mapping methods
+          compared to our method highlighting significant improvements in color consistency."
+  - id: "measuring-velocity-perception"
+    title: "Measuring Velocity Perception Regarding Stimulus Eccentricity"
+    authors:
+      - name: "Timon Scholz"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+      - name: "Colin Groth"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://colingroth.github.io/"
+      - name: "Susana Castillo"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/castillo"
+      - name: "Martin Eisemann"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/eisemann"
+      - name: "Marcus Magnor"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/magnor"
+    abstract: "A major factor resulting in cybersickness is the feeling of self-motion experienced when 
+      viewing a moving scene in Virtual Reality (VR). Current research indicates that this effect is 
+      largely created by motion in the periphery. To discover why this is the case, we investigate the 
+      influence of temporal frequency and eccentricity of a stimulus on the magnitude of perceived 
+      velocity in the periphery. Based on the perception of two-dimensional stimuli on a wide field-of-view 
+      display, we build a model to predict the scaling factor by which the perceived velocity of visual 
+      patterns deviates from the physical velocity. Further, our exploratory findings indicate no impact of 
+      gaze type on the results, suggesting our model works for both fixation and smooth pursuit scenarios. 
+      In an additional pilot study in Virtual Reality (VR), we test the accuracy of the model to predict 
+      unnoticeable object motion adaptation in 3D virtual worlds and find positive indications for a similar 
+      effect."
+    short_abstract: "We investigate the influence of temporal frequency and eccentricity of a stimulus on the 
+        magnitude of perceived velocity in the periphery, building a model to predict the scaling factor for 
+        perceived velocity deviations relative to eccentricity."
+    journal: "ACM Symposium on Applied Perception (SAP)"
+    publication_date: "2024"
+    is_oral_presentation: true
+    categories:
+      - "Perception"
+      - "Virtual Reality"
+    keywords:
+      - "Vection"
+      - "Cybersickness"
+      - "Virtual reality"
+      - "Velocity perception"
+      - "Stimulus eccentricity"
+    links:
+      Video: "https://youtu.be/w3GO86Fq8Rk"
+      Paper: "https://dl.acm.org/doi/10.1145/3675231.3675234"
+      # TODO:      Slides: "https://example.com/slides1.pdf"
+    thumbnail:
+      img: "./vel-perception/teaser.svg"
+      # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
+          recording trajectory of the input video"
+  - id: "dnpc"
+    title: "D-NPC: Dynamic Neural Point Clouds for Non-Rigid View Synthesis from Monocular Video"
+    authors:
+      - name: "Moritz Kappel"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://moritzkappel.github.io/"
+      - name: "Florian Hahlbohm"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://fhahlbohm.github.io/"
+      - name: "Timon Scholz"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+      - name: "Susana Castillo"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/castillo"
+      - name: "Christian Theobalt"
+        affiliation: "Max Planck Institute for Informatics, Saarland Informatics Campus"
+        link: "https://people.mpi-inf.mpg.de/~theobalt/"
+      - name: "Martin Eisemann"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/eisemann"
+      - name: "Vladislav Golyanik"
+        affiliation: "Max Planck Institute for Informatics, Saarland Informatics Campus"
+        link: "https://people.mpi-inf.mpg.de/~golyanik/"
+      - name: "Marcus Magnor"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/magnor"
+    abstract: "Dynamic reconstruction and spatiotemporal novel-view synthesis of non-rigidly deforming scenes 
+        recently gained increased attention. While existing work achieves impressive quality and performance on 
+        multi-view or teleporting camera setups, most methods fail to efficiently and faithfully recover motion 
+        and appearance from casual monocular captures. This paper contributes to the field by introducing a 
+        new method for dynamic novel view synthesis from monocular video, such as casual smartphone captures. 
+        Our approach represents the scene as a dynamic neural point cloud, an implicit time-conditioned point 
+        distribution that encodes local geometry and appearance in separate hash-encoded neural feature grids 
+        for static and dynamic regions. By sampling a discrete point cloud from our model, we can efficiently 
+        render high-quality novel views using a fast differentiable rasterizer and neural rendering network. 
+        Similar to recent work, we leverage advances in neural scene analysis by incorporating data-driven priors 
+        like monocular depth estimation and object segmentation to resolve motion and depth ambiguities 
+        originating from the monocular captures. In addition to guiding the optimization process, we show that 
+        these priors can be exploited to explicitly initialize our scene representation to drastically improve 
+        optimization speed and final image quality. As evidenced by our experimental evaluation, our dynamic point 
+        cloud model not only enables fast optimization and real-time frame rates for interactive applications, but 
+        also achieves competitive image quality on monocular benchmark sequences."
+    short_abstract: "D-NPC enables fast, non-rigid view synthesis from monocular video by expanding extending
+        Implicit Neural Point Clouds (INPC) to the temporal domain."
+    journal: "Eurographics (Computer Graphics Forum)"
+    publication_date: "2025"
+    is_oral_presentation: true
+    keywords:
+      - "Image-based rendering"
+      - "Point-based models"
+      - "Reconstruction"
+      - "Rasterization"
+    categories:
+      - "Novel View Synthesis"
+    links:
+      Video: "https://www.youtube.com/watch?v=NSpptS38uL0"
+      Paper: "https://arxiv.org/abs/2406.10078"
+      Code: "https://github.com/MoritzKappel/D-NPC"
+# TODO:      Slides: "https://example.com/slides1.pdf"
+    thumbnail:
+      img: "./dnpc/teaser.png"
+# TODO:      video: "https://www.youtube.com/watch?v=example1"
+      alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
+          recording trajectory of the input video"
