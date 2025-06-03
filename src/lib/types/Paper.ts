@@ -7,6 +7,7 @@ export type Paper = {
     authors: Author[];
     abstract: string;
     short_abstract?: string;
+    acknowledgements?: string;
     publication_date: string;
     journal: string;
     is_oral_presentation?: boolean;
@@ -19,7 +20,9 @@ export type Paper = {
     thumbnail: {
         // Relative to /lib/data/papers/... (as ./...), or /public/... (as /...) or absolute URL
         img: string;
-        video: string;
+        banner?: string;
+        video?: string;
         alt: string;
     }
+    bibtex?: string;
 };

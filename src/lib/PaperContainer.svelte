@@ -1,7 +1,7 @@
 <script lang="ts">
     import { type Paper } from '$lib/types/Paper';
-    const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{png,jpg,jpeg,svg}",
-            { eager: true }) as Record<string, { default: string }>;
+    const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{png,jpg,jpeg,svg,bib}",
+            { eager: true, query: '?url' }) as Record<string, { default: string }>;
 
     type Props = {
         paper: Paper;
@@ -107,7 +107,7 @@
                     + (paperIdx % 2 === 0 ? "" : " md:justify-end")
                     + (standaloneContainer ? "" : " lg:max-xl:justify-start")
             }>
-                <button class="btn btn-primary">Project Page</button>
+                <a class="btn btn-primary" href={`/paper/${paper.id}`}>Project Page</a>
                 {#if paper.links}
                     {#each Object.entries(paper.links) as [name, link]}
                         <a class="btn btn-soft btn-secondary" href={link} target="_blank">
@@ -115,6 +115,15 @@
                         </a>
                     {/each}
                 {/if}
+                {#if paper.bibtex}
+                    <a class="btn btn-soft btn-secondary"
+                       href={paper.bibtex.startsWith('.')
+                            ? resourceUrls[`/src/lib/data/papers/${paper.bibtex.slice(2)}`]?.default
+                            : paper.bibtex}
+                       download={`${paper.id}.bib`}>
+                        BibTeX
+                    </a>
+               {/if}
             </div>
         </div>
     </div>

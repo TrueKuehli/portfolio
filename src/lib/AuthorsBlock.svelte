@@ -1,0 +1,40 @@
+<script lang="ts">
+    let { authors } = $props();
+</script>
+
+
+{#snippet author(name: string, last: boolean)}
+    {#if name === PORTFOLIO_OWNER}
+        <span class="font-bold">{name}</span>
+    {:else}
+        <span>{name}</span>
+    {/if}
+{/snippet}
+
+{#snippet authorLink(name: string, link: string | undefined, last: boolean)}
+    {#if link}
+        <a href={link} class="text-primary link">{name}</a>
+    {:else}
+        {@render author(name, last)}
+    {/if}
+{/snippet}
+
+{#snippet authorLinkAffilliation(name: string, link: string | undefined, affiliation: string | undefined, last: boolean)}
+    {#if affiliation}
+        {@render authorLink(name, link, last)}
+        {#each affiliation.replace(',', '<br>').split('<br>') as aff}
+            <span class="text-xs text-base-content/70">{aff}</span>
+        {/each}
+    {:else}
+        {@render authorLink(name, link, last)}
+    {/if}
+{/snippet}
+
+
+<div class="w-full md:flex-1/2 flex flex-row flex-wrap gap-x-10 gap-y-4 justify-center">
+    {#each authors as author, authorIdx}
+        <div class="flex flex-col text-center">
+            {@render authorLinkAffilliation(author.name, author.link, author.affiliation, authorIdx === authors.length - 1)}
+        </div>
+    {/each}
+</div>

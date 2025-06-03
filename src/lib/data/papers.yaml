@@ -50,6 +50,7 @@ papers:
       # TODO:      video: "https://www.youtube.com/watch?v=example1"
       alt: "Person wearing a VR headset, reaching their hand out to touch a virtual object not visible 
           in the real world."
+    bibtex: "./hand-redirection/bibtex.bib"
   - id: "underwater-tone-mapping"
     title: "Optimizing Temporal Stability in Underwater Video Tone Mapping"
     authors:
@@ -82,6 +83,10 @@ papers:
         in a wide range of underwater scenarios."
     short_abstract: "We present a method for temporal stabilization of depth-based underwater image tone 
         mapping methods for application to monocular RGB video, improving color consistency across frames."
+    acknowledgements: "Partially funded by the Deutsche Forschungsgemeinschaft (DFG,
+        German Research Foundation) – 491805996 and by the Lower Saxony Ministry of 
+        Science and Culture under grant number ZN3994 within the Lower Saxony “Vorab“ 
+        of the Volkswagen Foundation and supported by the Center for Digital Innovations (ZDIN)."
     journal: "Proc. Vision, Modeling and Visualization (VMV)"
     publication_date: "2023"
     is_oral_presentation: false
@@ -98,9 +103,11 @@ papers:
     thumbnail:
       img: "./underwater/teaser.jpg"
       # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      banner: "./underwater/banner.svg"
       alt: "Two pictures of a coral reef, showcasing the instability of traditional tone-mapping methods
           compared to our method highlighting significant improvements in color consistency."
-  - id: "measuring-velocity-perception"
+    bibtex: "./underwater/bibtex.bib"
+  - id: "velocity-eccentricity"
     title: "Measuring Velocity Perception Regarding Stimulus Eccentricity"
     authors:
       - name: "Timon Scholz"
@@ -131,6 +138,9 @@ papers:
     short_abstract: "We investigate the influence of temporal frequency and eccentricity of a stimulus on the 
         magnitude of perceived velocity in the periphery, building a model to predict the scaling factor for 
         perceived velocity deviations relative to eccentricity."
+    acknowledgements: "The authors gratefully acknowledge partial funding by the DFG 
+        (MA2555/17-1, \"Real-Action VR: Immersive Experience of ActionCam Video Recordings\", 
+        Project number 523421583)."
     journal: "ACM Symposium on Applied Perception (SAP)"
     publication_date: "2024"
     is_oral_presentation: true
@@ -149,9 +159,11 @@ papers:
       # TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
       img: "./vel-perception/teaser.svg"
+      banner: "./vel-perception/wide-teaser.svg"
       # TODO:      video: "https://www.youtube.com/watch?v=example1"
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"
+    bibtex: "./vel-perception/bibtex.bib"
   - id: "dnpc"
     title: "D-NPC: Dynamic Neural Point Clouds for Non-Rigid View Synthesis from Monocular Video"
     authors:
@@ -216,3 +228,4 @@ papers:
 # TODO:      video: "https://www.youtube.com/watch?v=example1"
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"
+    bibtex: "./dnpc/bibtex.bib"
