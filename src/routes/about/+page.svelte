@@ -17,7 +17,7 @@
 
 
 <div class={standalone ?
-        "hero bg-base-200 min-h-screen" :
+        "hero min-h-screen" :
         "hero bg-base-200 lg:max-h-[calc(100vh_-_2em)] m-4 mb-0 lg:mb-4 lg:mr-0 lg:pt-4 lg:sticky lg:top-4 rounded-xl " +
         "content-start overflow-y-auto w-auto"}>
     <div class={"hero-content flex-col gap-12 text-center" + (standalone ? " lg:flex-row lg:text-left" : "")}>
