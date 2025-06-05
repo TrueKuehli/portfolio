@@ -1,7 +1,7 @@
 <script lang="ts">
     import {onMount} from "svelte";
 
-    import banner from "$lib/data/papers/vel-perception/wide-teaser.png?enhanced";
+    import bannerSvg from "$lib/data/papers/vel-perception/wide-teaser.svg?raw";
     import modelEquation from "$lib/data/papers/vel-perception/model-equation.svg?raw";
     import gaborAnimated from "$lib/data/papers/vel-perception/gabor_animated.mp4";
     import modelLoop from "$lib/data/papers/vel-perception/model_rotate_loop.webm";
@@ -18,15 +18,24 @@
     const copyBibTex = () => {
         navigator.clipboard.writeText(bibTexSource.trim());
     };
+
+    let bannerElement: HTMLDivElement | null = null;
+    onMount(() => {
+        if (bannerElement) {
+            bannerElement.children[0]?.classList.add(
+                "m-1", "mb-5", "p-1", "max-h-46", "text-center", "bg-center", "z-10", "fill-base-content",
+                "stroke-base-content"
+            );
+
+            bannerElement.classList.remove('hidden');
+        }
+    });
 </script>
 
 
 <div class={"flex flex-col w-full paper-sidebar pb-12"}>
-    <div class="w-full max-h-52 relative overflow-clip">
-        <enhanced:img src={banner}
-                      class="relative m-1 mb-5 p-1 mx-auto max-h-46 w-auto text-center bg-center z-10"
-                      alt={'Banner showcasing changes in perceived velocity with eccentricity'}
-                      loading="lazy"/>
+    <div class="flex w-full max-h-52 relative justify-center overflow-clip hidden" bind:this={bannerElement}>
+        {@html bannerSvg}
     </div>
     <div class="w-full flex flex-col items-center justify-center px-4">
         <article class="prose lg:prose-xl mt-2">
