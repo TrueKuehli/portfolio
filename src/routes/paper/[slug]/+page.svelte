@@ -101,9 +101,11 @@
             </p>
             {#if bibTex}
                 <h3 id="citation">Citation</h3>
-                <pre><code>{bibTex}</code></pre>
-                <a class="btn btn-lg" on:click={copyBibTex}><Copy/> Copy</a>
-                <a class="btn btn-lg" href={bibTexUrl} download={`${paper.id}.bib`}>
+                <div class="grid">
+                    <pre style="margin-top: 0;"><code>{bibTex}</code></pre>
+                </div>
+                <button class="btn btn-lg mt-2 font-bold" onclick={copyBibTex}><Copy/> Copy</button>
+                <a class="btn btn-lg mt-2 font-bold" href={bibTexUrl} download={`${paper.id}.bib`}>
                     <Download/> Download
                 </a>
             {/if}
