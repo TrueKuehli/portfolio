@@ -3,7 +3,9 @@
     import Copy from "@lucide/svelte/icons/copy"
     import Download from "@lucide/svelte/icons/download";
 
-    const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{png,jpg,jpeg,svg,bib}",
+    const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}",
+        { eager: true, query: '?enhanced' }) as Record<string, { default: string }>;
+    const bibTexUrls = import.meta.glob("$lib/data/papers/**/*.bib",
         { eager: true, query: '?url' }) as Record<string, { default: string }>;
     const bibtexSource = import.meta.glob("$lib/data/papers/**/*.bib",
         { eager: true, query: '?raw' }) as Record<string, { default: string }>;
@@ -14,7 +16,7 @@
 
     let bibTexUrl = $derived(paper.bibtex ?
         (paper.bibtex.startsWith('.')
-            ? resourceUrls[`/src/lib/data/papers/${paper.bibtex.slice(2)}`]?.default
+            ? bibTexUrls[`/src/lib/data/papers/${paper.bibtex.slice(2)}`]?.default
             : paper.bibtex)
         : null);
     let bibTex = $derived(paper.bibtex ?
@@ -33,20 +35,12 @@
 
 
 <div class={"flex flex-col w-full paper-sidebar pb-12"}>
-    <div class="flex w-full max-h-52 justify-center relative overflow-clip">
+    <div class="flex w-full max-h-52 justify-center">
         {#if paperBanner}
-            <img src={paperBanner.startsWith('.') ?
-                        resourceUrls[`/src/lib/data/papers/${paperBanner.slice(2)}`]?.default
-                        : paperBanner}
-                 class="banner-mask w-full max-h-52 object-cover absolute text-center bg-center blur-lg opacity-30"
+            <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paperBanner.slice(2)}`]?.default}
+                 class="m-1 mb-5 p-1 max-h-46 w-auto text-center bg-center"
                  alt={paper.thumbnail.alt ? paper.thumbnail.alt : `Preview image for paper ${paper.title}`}
-                 loading="lazy"/>
-            <img src={paperBanner.startsWith('.') ?
-                        resourceUrls[`/src/lib/data/papers/${paperBanner.slice(2)}`]?.default
-                        : paperBanner}
-                 class="m-1 mb-5 p-1 max-h-46 text-center bg-center z-10"
-                 alt={paper.thumbnail.alt ? paper.thumbnail.alt : `Preview image for paper ${paper.title}`}
-                 loading="lazy"/>
+                 loading="eager"/>
         {/if}
     </div>
     <div class="w-full flex flex-col items-center justify-center px-4">
@@ -118,10 +112,3 @@
         </article>
     </div>
 </div>
-
-
-<style>
-    .banner-mask {
-        mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 7.5%);
-    }
-</style>

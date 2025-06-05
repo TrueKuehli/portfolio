@@ -103,7 +103,7 @@ papers:
     thumbnail:
       img: "./underwater/teaser.jpg"
       # TODO:      video: "https://www.youtube.com/watch?v=example1"
-      banner: "./underwater/banner.svg"
+      banner: "./underwater/banner.png"
       alt: "Two pictures of a coral reef, showcasing the instability of traditional tone-mapping methods
           compared to our method highlighting significant improvements in color consistency."
     bibtex: "./underwater/bibtex.bib"
@@ -158,8 +158,8 @@ papers:
       Paper: "https://dl.acm.org/doi/10.1145/3675231.3675234"
       # TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
-      img: "./vel-perception/teaser.svg"
-      banner: "./vel-perception/wide-teaser.svg"
+      img: "./vel-perception/teaser.png"
+      banner: "./vel-perception/wide-teaser.png"
       # TODO:      video: "https://www.youtube.com/watch?v=example1"
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"

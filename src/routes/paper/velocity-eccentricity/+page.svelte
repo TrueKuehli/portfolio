@@ -1,49 +1,32 @@
 <script lang="ts">
     import {onMount} from "svelte";
 
-    import bannerSvg from "$lib/data/papers/vel-perception/wide-teaser.svg?raw";
+    import banner from "$lib/data/papers/vel-perception/wide-teaser.png?enhanced";
     import modelEquation from "$lib/data/papers/vel-perception/model-equation.svg?raw";
     import gaborAnimated from "$lib/data/papers/vel-perception/gabor_animated.mp4";
     import modelLoop from "$lib/data/papers/vel-perception/model_rotate_loop.webm";
     import bibTexUrl from "$lib/data/papers/vel-perception/bibtex.bib?url";
     import bibTexSource from "$lib/data/papers/vel-perception/bibtex.bib?raw";
-
     import AuthorsBlock from "$lib/AuthorsBlock.svelte";
+
     import Download from "@lucide/svelte/icons/download";
     import Copy from "@lucide/svelte/icons/copy";
 
     let { data } = $props();
     let paper = $derived(data.paper);
 
-    let bannerElement: HTMLDivElement | null = null;
     const copyBibTex = () => {
         navigator.clipboard.writeText(bibTexSource.trim());
     };
-
-    onMount(() => {
-        if (bannerElement) {
-            if (bannerElement.children[0] !== undefined) {
-                bannerElement.children[0].classList.add(
-                    "banner-mask", "w-full", "max-h-52", "object-cover", "absolute", "text-center", "bg-center",
-                    "blur-lg", "opacity-30"
-                );
-                bannerElement.children[0].setAttribute("preserveAspectRatio", "none");
-            }
-            bannerElement.children[1]?.classList.add(
-                "m-1", "mb-5", "p-1", "max-h-46", "text-center", "bg-center", "z-10", "fill-base-content",
-                "stroke-base-content"
-            );
-
-            bannerElement.classList.remove('hidden');
-        }
-    });
 </script>
 
 
 <div class={"flex flex-col w-full paper-sidebar pb-12"}>
-    <div class="flex w-full max-h-52 justify-center relative overflow-clip hidden" bind:this={bannerElement}>
-        {@html bannerSvg}
-        {@html bannerSvg}
+    <div class="w-full max-h-52 relative overflow-clip">
+        <enhanced:img src={banner}
+                      class="relative m-1 mb-5 p-1 mx-auto max-h-46 w-auto text-center bg-center z-10"
+                      alt={'Banner showcasing changes in perceived velocity with eccentricity'}
+                      loading="lazy"/>
     </div>
     <div class="w-full flex flex-col items-center justify-center px-4">
         <article class="prose lg:prose-xl mt-2">
@@ -174,15 +157,3 @@
         </article>
     </div>
 </div>
-
-
-<style>
-    :global(.banner-mask) {
-        mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 7.5%);
-    }
-
-    .model-video {
-        margin-top: -12%;
-        margin-bottom: -5%;
-    }
-</style>

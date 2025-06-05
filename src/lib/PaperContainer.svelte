@@ -1,6 +1,8 @@
 <script lang="ts">
     import { type Paper } from '$lib/types/Paper';
-    const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{png,jpg,jpeg,svg,bib}",
+    const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}",
+            { eager: true, query: '?enhanced' }) as Record<string, { default: string }>;
+    const bibTexUrls = import.meta.glob("$lib/data/papers/**/*.bib",
             { eager: true, query: '?url' }) as Record<string, { default: string }>;
 
     type Props = {
@@ -50,9 +52,7 @@
             + (standaloneContainer ? "" : " lg:max-xl:flex-col lg:max-xl:text-start")
     }>
         {#if paper.thumbnail.img}
-            <img src={paper.thumbnail.img.startsWith('.') ?
-                    resourceUrls[`/src/lib/data/papers/${paper.thumbnail.img.slice(2)}`]?.default
-                    : paper.thumbnail.img}
+            <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paper.thumbnail.img.slice(2)}`]?.default}
                  class="max-w-2xs xl:max-w-sm max-md:max-w-sm min-h-32 mb-4 w-full rounded-lg bg-base-200 shadow-xl text-center bg-center"
                  alt={paper.thumbnail.alt ? paper.thumbnail.alt : `Preview image for paper ${paper.title}`}
                  loading="lazy"/>
@@ -118,7 +118,7 @@
                 {#if paper.bibtex}
                     <a class="btn btn-soft btn-secondary"
                        href={paper.bibtex.startsWith('.')
-                            ? resourceUrls[`/src/lib/data/papers/${paper.bibtex.slice(2)}`]?.default
+                            ? bibTexUrls[`/src/lib/data/papers/${paper.bibtex.slice(2)}`]?.default
                             : paper.bibtex}
                        download={`${paper.id}.bib`}>
                         BibTeX

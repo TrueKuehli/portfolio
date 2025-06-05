@@ -6,7 +6,7 @@
     import github from './assets/github.svg?raw';
     import bluesky from './assets/bluesky.svg?raw';
     import linkedin from './assets/linkedin.svg?raw';
-    import timon_scholz from './assets/timon_scholz.jpg';
+    import timon_scholz from './assets/timon_scholz.jpg?enhanced';
 
     type Props = {
         standalone: boolean;
@@ -23,7 +23,7 @@
     <div class={"hero-content flex-col gap-12 text-center" + (standalone ? " lg:flex-row lg:text-left" : "")}>
         <div class="avatar">
             <div class={"mask mask-squircle shadow-2xl " + (standalone ? "w-96" : "w-64 2xl:w-80")}>
-                <img src={timon_scholz} />
+                <enhanced:img src={timon_scholz} alt="Headshot of Timon Scholz" />
             </div>
         </div>
         <div>
