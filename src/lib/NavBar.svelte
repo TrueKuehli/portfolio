@@ -43,7 +43,9 @@
 <div class="navbar bg-base-100 shadow-sm">
     <div class="navbar-start w-2/5 md:w-1/2">
         <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-md btn-ghost tooltip tooltip-right" data-tip="Navigation">
+            <div tabindex="0" role="button" class="btn btn-md btn-ghost tooltip tooltip-right" data-tip="Navigation"
+                 aria-label="Navigation Drowpdown Menu"
+            >
                 <Menu class="h-7 w-7 text-primary" />
             </div>
             <ul class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 lg:w-100 md:w-80 w-60 p-2 shadow">
@@ -72,9 +74,9 @@
         </a>
     </div>
     <div class="navbar-end hidden md:inline-flex">
-        <label class="toggle toggle-lg text-primary">
+        <label id="theme-switch" class="toggle toggle-lg text-primary" aria-label="Theme Switch">
             <input class="theme-controller" value={isDarkModeDefault ? "fantasy" : "dracula"}
-                   type="checkbox" bind:checked={isModeSwitched} on:change={updatePreferredTheme} />
+                   type="checkbox" bind:checked={isModeSwitched} on:change={updatePreferredTheme} aria-labelledby="theme-switch" />
 
             {#if isDarkModeDefault}
                 <Moon size={20} />
@@ -85,7 +87,7 @@
             {/if}
         </label>
         <div class="tooltip tooltip-bottom ml-2" data-tip="Home">
-            <a href="/" class="btn btn-md btn-ghost btn-secondary">
+            <a href="/" class="btn btn-md btn-ghost btn-secondary" aria-label="Home" role="button">
                 <House class="h-7 w-7 text-primary" />
             </a>
         </div>

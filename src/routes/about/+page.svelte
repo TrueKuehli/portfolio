@@ -39,25 +39,25 @@
             </p>
             <div class="flex flex-wrap items-center justify-center gap-1.5 mx-10">
                 <div class="max-md:tooltip max-md:tooltip-bottom" data-tip="E-Mail">
-                    <a href="mailto:scholz@cg.cs.tu-bs.de" class="btn btn-outline btn-primary">
+                    <a href="mailto:scholz@cg.cs.tu-bs.de" class="btn btn-outline btn-primary" aria-label="E-Mail Timon Scholz">
                         <AtSign />
                         <span class="hidden md:inline">E-Mail</span>
                     </a>
                 </div>
                 <div class="max-md:tooltip max-md:tooltip-bottom" data-tip="Profile">
-                    <a href="https://graphics.tu-bs.de/people/scholz-timon" target="_blank" class="btn btn-outline btn-primary">
+                    <a href="https://graphics.tu-bs.de/people/scholz-timon" target="_blank" class="btn btn-outline btn-primary" aria-label="Company Profile">
                         <CircleUser />
                         <span class="hidden md:inline">Profile</span>
                     </a>
                 </div>
                 <div class="max-md:tooltip max-md:tooltip-bottom" data-tip="Google Scholar">
-                    <a href="https://scholar.google.com/citations?user=UZKZzwoAAAAJ" target="_blank" class="btn btn-outline btn-primary">
+                    <a href="https://scholar.google.com/citations?user=UZKZzwoAAAAJ" target="_blank" class="btn btn-outline btn-primary" aria-label="Google Scholar Profile">
                         <Library />
                         <span class="hidden md:inline">Scholar</span>
                     </a>
                 </div>
                 <div class="max-md:tooltip max-md:tooltip-bottom" data-tip="Bluesky">
-                    <a href="https://bsky.app/profile/timonscholz.bsky.social" target="_blank" class="btn btn-outline btn-primary">
+                    <a href="https://bsky.app/profile/timonscholz.bsky.social" target="_blank" class="btn btn-outline btn-primary" aria-label="Bluesky Profile">
                         <div class="h-5 w-5 fill-primary">
                             {@html bluesky}
                         </div>
@@ -65,7 +65,7 @@
                     </a>
                 </div>
                 <div class="max-md:tooltip max-md:tooltip-bottom" data-tip="LinkedIn">
-                    <a href="https://www.linkedin.com/in/timon-scholz-26bb4a356/" target="_blank" class="btn btn-outline btn-primary">
+                    <a href="https://www.linkedin.com/in/timon-scholz-26bb4a356/" target="_blank" class="btn btn-outline btn-primary" aria-label="LinkedIn Profile">
                         <div class="h-5 w-5 fill-primary">
                             {@html linkedin}
                         </div>
@@ -73,7 +73,7 @@
                     </a>
                 </div>
                 <div class="max-md:tooltip max-md:tooltip-bottom" data-tip="GitHub">
-                    <a href="https://github.com/TrueKuehli" target="_blank" class="btn btn-outline btn-primary">
+                    <a href="https://github.com/TrueKuehli" target="_blank" class="btn btn-outline btn-primary" aria-label="GitHub Profile">
                         <div class="h-5 w-5 fill-primary">
                             {@html github}
                         </div>
