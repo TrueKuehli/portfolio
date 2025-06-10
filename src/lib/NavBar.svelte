@@ -66,14 +66,14 @@
             </ul>
         </div>
     </div>
-    <div class="navbar-center">
+    <div class="navbar-center hidden md:inline-flex">
         <a href="/" class="text-xl select-none font-semibold">
             <img src="/favicon.svg" alt="Favicon"
                  class={'h-10 w-10 inline-block' + ((isDarkModeDefault !== isModeSwitched) ? ' invert' : '')} />
             Timon Scholz
         </a>
     </div>
-    <div class="navbar-end hidden md:inline-flex">
+    <div class="navbar-end inline-flex grow justify-self-end">
         <label id="theme-switch" class="toggle toggle-lg text-primary" aria-label="Theme Switch">
             <input class="theme-controller" value={isDarkModeDefault ? "fantasy" : "dracula"}
                    type="checkbox" bind:checked={isModeSwitched} on:change={updatePreferredTheme} aria-labelledby="theme-switch" />
@@ -86,7 +86,7 @@
                 <Moon size={20} />
             {/if}
         </label>
-        <div class="tooltip tooltip-bottom ml-2" data-tip="Home">
+        <div class="pointer-fine:tooltip pointer-fine:tooltip-bottom ml-2 block" data-tip="Home">
             <a href="/" class="btn btn-md btn-ghost btn-secondary" aria-label="Home" role="button">
                 <House class="h-7 w-7 text-primary" />
             </a>
