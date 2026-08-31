@@ -229,3 +229,60 @@ papers:
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"
     bibtex: "./dnpc/bibtex.bib"
+  - id: "spags"
+    title: "SPaGS: Fast and Accurate 3D Gaussian Splatting for Spherical Panoramas"
+    authors:
+      - name: "Junbo Li"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://www.cg.cs.tu-bs.de/people/li"
+      - name: "Florian Hahlbohm"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://fhahlbohm.github.io/"
+      - name: "Timon Scholz"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+      - name: "Martin Eisemann"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/eisemann"
+      - name: "Jan-Philipp Tauscher"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://people.mpi-inf.mpg.de/~golyanik/"
+      - name: "Marcus Magnor"
+        affiliation: "Computer Graphics Lab, TU Braunschweig; University of New Mexico, USA"
+        link: "https://graphics.tu-bs.de/people/magnor"
+    abstract: "In this paper we propose SPaGS, a high-quality, real-time free-viewpoint rendering approach from 
+        360-degree panoramic images. While existing methods building on Neural Radiance Fields or 3D Gaussian Splatting 
+        have difficulties to achieve real-time frame rates and high-quality results at the same time, SPaGS combines 
+        the advantages of an explicit 3D Gaussian-based scene representation and ray casting-based rendering to attain 
+        fast and accurate results. Central to our new approach is the exact calculation of axis-aligned bounding boxes 
+        for spherical images that significantly accelerates omnidirectional ray casting of 3D Gaussians. We also 
+        present a new dataset consisting of ten real-world scenes recorded with a drone that incorporates both 
+        calibrated 360-degree panoramic images as well as perspective images captured simultaneously, i.e., with the 
+        same flight trajectory. Our evaluation on this new dataset as well as established benchmarks demonstrates that 
+        SPaGS excels over state-of-the-art methods in terms of both rendering quality and speed."
+    short_abstract: "SPaGS enables high-quality, real-time free-viewpoint rendering from 360-degree panoramic images by
+        introducing a new method for computing axis-aligned bounding boxes for spherical images that significantly 
+        accelerates omnidirectional ray casting of 3D Gaussians"
+    journal: "EGSR 2025 (CGF Journal Track)"
+    publication_date: "2025"
+    is_oral_presentation: true
+    keywords:
+      - "Image-based rendering"
+      - "Gaussian Splatting"
+      - "Reconstruction"
+      - "Rasterization"
+      - "Panoramic Imaging"
+      - "UAV"
+    categories:
+      - "Novel View Synthesis"
+    links:
+      Paper: "https://diglib.eg.org/bitstreams/58aad341-5359-4bfb-87cd-b47ae74d3d20/download"
+      Supplemental: "https://junboli-cn.github.io/spags/supplemental.pdf"
+      Video: "https://junboli-cn.github.io/spags/resources/videos/intro.mp4"
+      Code: "https://github.com/nerficg-project/SPaGS"
+      Dataset: "https://www.cg.cs.tu-bs.de/upload/projects/drone/datasets/RaR_full.zip"
+    thumbnail:
+      img: "./spags/thumbnail.jpg"
+      # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
+          recording trajectory of the input video"
+    bibtex: "./spags/bibtex.bib"
