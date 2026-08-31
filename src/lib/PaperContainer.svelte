@@ -46,7 +46,7 @@
 
 
 <div class={"hero w-auto m-4 mb-0 max-sm:m-2 max-md:border-base-300 max-md:border-solid max-md:border-1 " +
-            "max-md:rounded-xl max-md:shadow-xl max-md:mb-3 max-sm:mb-3 overflow-clip"}>
+            "max-md:rounded-xl max-md:shadow-xl max-md:mb-3 max-sm:mb-3 max-md:overflow-clip"}>
     <div class={"hero-content w-full md:gap-x-6 flex-col"
             + (paperIdx % 2 === 0 ? " md:flex-row" : " md:text-end md:flex-row-reverse")
             + (standaloneContainer ? "" : " lg:max-xl:flex-col lg:max-xl:text-start")
