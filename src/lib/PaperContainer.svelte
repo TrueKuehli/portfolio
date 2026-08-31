@@ -34,7 +34,7 @@
     {#if affiliation}
         <span class="pointer-fine:tooltip pointer-fine:tooltip-accent pointer-fine:tooltip-bottom">
             <span class="tooltip-content not-pointer-fine:hidden">
-                {@html affiliation.replaceAll(',', '<br>').replaceAll(';', '<br><hr style="margin: 0.25rem;">')}
+                {@html affiliation.replaceAll(',', ',<br>').replaceAll(';', '<br><hr style="margin: 0.25rem;">')}
             </span>
             {@render authorLink(name, link, last)}
         </span>
