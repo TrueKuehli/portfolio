@@ -2,6 +2,8 @@
     import { type Paper } from '$lib/types/Paper';
     const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}",
             { eager: true, query: '?enhanced' }) as Record<string, { default: string }>;
+    const videoUrls = import.meta.glob("$lib/data/papers/**/*.{mp4,webm}",
+            { eager: true, query: '?url' }) as Record<string, { default: string }>;
     const bibTexUrls = import.meta.glob("$lib/data/papers/**/*.bib",
             { eager: true, query: '?url' }) as Record<string, { default: string }>;
 
@@ -11,6 +13,52 @@
         standaloneContainer?: boolean;
     };
     let {paper, paperIdx, standaloneContainer = true}: Props = $props();
+
+    let videoUrl = $derived(paper.thumbnail.video?.startsWith('.')
+        ? videoUrls[`/src/lib/data/papers/${paper.thumbnail.video.slice(2)}`]?.default
+        : paper.thumbnail.video);
+
+    let hovered = $state(false);
+    let tapped = $state(false);
+    let active = $derived(hovered || tapped);
+    let videoEl = $state<HTMLVideoElement>();
+
+    $effect(() => {
+        if (active) {
+            videoEl?.play().catch(() => {});
+        } else {
+            videoEl?.pause();
+        }
+    });
+
+    $effect(() => {
+        if (!tapped) return;
+        const onClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement | null;
+            if (!target?.closest('[data-paper-thumbnail]')) {
+                tapped = false;
+                hovered = false;
+            }
+        };
+        document.addEventListener('click', onClick);
+        return () => document.removeEventListener('click', onClick);
+    });
+
+    const handleEnter = () => {
+        if (window.matchMedia('(pointer: fine)').matches) hovered = true;
+    };
+    const handleLeave = () => {
+        if (window.matchMedia('(pointer: fine)').matches) hovered = false;
+    };
+    const handleTap = () => {
+        if (window.matchMedia('(pointer: coarse)').matches) tapped = !tapped;
+    };
+    const handleKeydown = (e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            tapped = !tapped;
+        }
+    };
 </script>
 
 
@@ -52,12 +100,35 @@
             + (standaloneContainer ? "" : " lg:max-xl:flex-col lg:max-xl:text-start")
     }>
         {#if paper.thumbnail.img}
-            <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paper.thumbnail.img.slice(2)}`]?.default}
-                 class="max-w-2xs xl:max-w-sm max-md:max-w-sm min-h-32 mb-4 w-full rounded-lg bg-base-200 shadow-xl text-center bg-center"
-                 alt={paper.thumbnail.alt ? paper.thumbnail.alt : `Preview image for paper ${paper.title}`}
-                 loading="lazy"/>
+            <div class="relative w-full max-w-2xs xl:max-w-sm max-md:max-w-sm min-h-32 mb-4 rounded-lg bg-base-200 shadow-xl overflow-hidden"
+                 data-paper-thumbnail
+                 role="button"
+                 tabindex="0"
+                 onmouseenter={handleEnter} onmouseleave={handleLeave}
+                 onclick={handleTap} onkeydown={handleKeydown}>
+                <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paper.thumbnail.img.slice(2)}`]?.default}
+                     class="w-full min-h-32 rounded-lg text-center bg-center object-cover transition-opacity duration-300"
+                     alt={paper.thumbnail.alt ? paper.thumbnail.alt : `Preview image for paper ${paper.title}`}
+                     loading="lazy"
+                     class:opacity-0={active}
+                     class:opacity-100={!active}/>
+                {#if videoUrl}
+                    <video
+                        bind:this={videoEl}
+                        class="absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-300"
+                        class:opacity-100={active}
+                        class:opacity-0={!active}
+                        src={videoUrl}
+                        muted
+                        playsinline
+                        loop
+                        preload="metadata"
+                        controls={false}
+                        aria-hidden="true">
+                    </video>
+                {/if}
+            </div>
         {/if}
-        <!-- TODO: Add video thumbnail -->
 
         <div class="w-full md:flex-1/2">
             <h1 class="text-2xl font-bold">{paper.title}</h1>

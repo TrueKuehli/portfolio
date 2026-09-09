@@ -47,7 +47,7 @@ papers:
       Paper: "https://colingroth.github.io/papers/Groth23_handRedirection.pdf"
     thumbnail:
       img: "./hand-redirection/teaser.jpg"
-      # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      video: "./hand-redirection/blink-preview.mp4"
       alt: "Person wearing a VR headset, reaching their hand out to touch a virtual object not visible 
           in the real world."
     bibtex: "./hand-redirection/bibtex.bib"
@@ -102,7 +102,7 @@ papers:
     # TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
       img: "./underwater/teaser.jpg"
-      # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      video: "./underwater/underwater-preview.mp4"
       banner: "./underwater/banner.png"
       alt: "Two pictures of a coral reef, showcasing the instability of traditional tone-mapping methods
           compared to our method highlighting significant improvements in color consistency."
@@ -159,8 +159,8 @@ papers:
       # TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
       img: "./vel-perception/teaser.png"
+      video: "./vel-perception/velocity-preview.mp4"
       banner: "./vel-perception/wide-teaser.png"
-      # TODO:      video: "https://www.youtube.com/watch?v=example1"
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"
     bibtex: "./vel-perception/bibtex.bib"
@@ -225,7 +225,7 @@ papers:
 # TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
       img: "./dnpc/teaser.png"
-# TODO:      video: "https://www.youtube.com/watch?v=example1"
+      video: "./dnpc/dnpc-preview.mp4"
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"
     bibtex: "./dnpc/bibtex.bib"
@@ -282,7 +282,7 @@ papers:
       Dataset: "https://www.cg.cs.tu-bs.de/upload/projects/drone/datasets/RaR_full.zip"
     thumbnail:
       img: "./spags/thumbnail.jpg"
-      # TODO:      video: "https://www.youtube.com/watch?v=example1"
+      video: "./spags/spags-preview.mp4"
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"
     bibtex: "./spags/bibtex.bib"
