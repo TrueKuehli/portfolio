@@ -75,7 +75,7 @@
                 {#if paper.links}
                     {#each Object.entries(paper.links) as [name, link]}
                         <a class="btn btn-md lg:btn-lg btn-soft btn-secondary px-8" href={link} target="_blank">
-                            {name}
+                            {#if link == null}{name} (Coming Soon){:else}{name}{/if}
                         </a>
                     {/each}
                     {#if bibTex}

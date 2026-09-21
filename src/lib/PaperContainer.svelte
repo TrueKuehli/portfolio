@@ -182,7 +182,7 @@
                 {#if paper.links}
                     {#each Object.entries(paper.links) as [name, link]}
                         <a class="btn btn-soft btn-secondary" href={link} target="_blank">
-                            {name}
+                            {#if link === null}{name} (Coming Soon){:else}{name}{/if}
                         </a>
                     {/each}
                 {/if}
