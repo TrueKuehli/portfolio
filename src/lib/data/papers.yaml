@@ -42,6 +42,7 @@ papers:
       - "Redirection"
       - "VR"
       - "Eye blinks"
+      - "Eye tracking"
     links:
       Video: "https://www.youtube.com/watch?v=TGZYa9tAVPQ"
       Paper: "https://colingroth.github.io/papers/Groth23_handRedirection.pdf"
@@ -286,3 +287,63 @@ papers:
       alt: "Reconstruction of two dynamic scenes from monocular video; dynamic scenes show camera frustums indicating 
           recording trajectory of the input video"
     bibtex: "./spags/bibtex.bib"
+  - id: "vr-htgs"
+    title: "Fast Eye-Tracked 3D Gaussian Rendering for Virtual Reality"
+    authors:
+      - name: "Timon Scholz"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+      - name: "Florian Hahlbohm"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://fhahlbohm.github.io/"
+      - name: "Martin Eisemann"
+        affiliation: "Computer Graphics Lab, TU Braunschweig"
+        link: "https://graphics.tu-bs.de/people/eisemann"
+      - name: "Susana Castillo"
+        affiliation: "Computer Graphics Lab, TU Braunschweig; Cluster of Excellence PhoenixD, Leibniz University Hannover"
+        link: "https://graphics.tu-bs.de/people/castillo"
+      - name: "Marcus Magnor"
+        affiliation: "Computer Graphics Lab, TU Braunschweig; University of New Mexico, USA"
+        link: "https://graphics.tu-bs.de/people/magnor"
+    abstract: "Recent advances in 3D Gaussian Splatting (3DGS) promise interactive exploration of photorealistic
+        reconstructions in virtual reality (VR) applications. Unfortunately, current approaches for 3DGS are unable
+        to meet the high demands of VR rendering, suffering from immersion-breaking artifacts, requiring aggressive
+        pruning of primitives, or failing to reach sufficiently high frame rates for complex scenes. We introduce
+        VR-HTGS, the first fully integrated eye-tracked foveated solution for 3DGS rendering that, in contrast to
+        previous work, dynamically adapts the tile-based 3DGS rasterizer to a heterogeneous tile layout following
+        the gaze position. In comparison to homogeneous layouts, this allows tiles to be rendered at varying
+        resolutions, retaining real-time performance without sacrificing the primitive count. To minimize
+        immersion-breaking inconsistencies during rendering, VR-HTGS builds on top of an efficient view-consistent
+        Gaussian splat renderer to enable dynamic foveation along with further modifications to reduce aliasing,
+        popping, and sky floaters. In combination, these improvements enable fast, high-quality rendering of
+        3D Gaussians at 120+ Hz on commodity hardware for scenes consisting of millions of Gaussians."
+    short_abstract: "VR-HTGS enables artifact-free, eye-tracked foveated rendering of 3D Gaussian Splatting in VR at
+        120+ Hz by dynamically adapting the tile-based rasterizer to a heterogeneous tile layout following the gaze
+        position, without sacrificing perceptual quality or model fidelity."
+    acknowledgements: "The authors gratefully acknowledge funding by the DFG under Germany's Excellence Strategy
+        within the Cluster of Excellence PhoenixD (EXC 2122, Project ID 390833453), as well as from the DFG Projects
+        \"Real-Action VR\" (ID 523421583) and \"Increasing Realism of Omnidirectional Videos in Virtual Reality\"
+        (ID 491805996). Open Access funding enabled and organized by Projekt DEAL."
+    journal: "Proc. Vision, Modeling and Visualization (VMV)"
+    publication_date: "2026"
+    is_oral_presentation: true
+    categories:
+      - "Virtual Reality"
+      - "Novel View Synthesis"
+    keywords:
+      - "Gaussian Splatting"
+      - "Virtual reality"
+      - "Foveated rendering"
+      - "Eye tracking"
+      - "Image-based rendering"
+      - "Rasterization"
+    links:
+      Paper: null
+      Video: null
+      Code: null
+    thumbnail:
+      img: "./vr-htgs/teaser-small.jpg"
+      banner: "./vr-htgs/teaser.jpg"
+      video: "./vr-htgs/teaser_20s.mp4"
+      alt: "Illustration of foveated rendering in of a Gaussian Splatting scene using VR-HTGS, showing inhomogeneous 
+            tile layouts that dynamically adjust to the user's gaze position."
+    bibtex: "./vr-htgs/bibtex.bib"
