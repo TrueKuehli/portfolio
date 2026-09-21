@@ -22,8 +22,14 @@
 {#snippet authorLinkAffilliation(name: string, link: string | undefined, affiliation: string | undefined, last: boolean)}
     {#if affiliation}
         {@render authorLink(name, link, last)}
-        {#each affiliation.replace(',', '<br>').split('<br>') as aff}
-            <span class="text-xs text-base-content/70">{aff}</span>
+        {#each affiliation.split(';') as aff_entry}
+            {#each aff_entry.split(',') as aff_line, idx}
+                {#if idx > 0}
+                    <span class="text-xs text-base-content/70 font-thin">{aff_line}</span>
+                {:else}
+                    <span class="text-xs text-base-content/70">{aff_line}</span>
+                {/if}
+            {/each}
         {/each}
     {:else}
         {@render authorLink(name, link, last)}
