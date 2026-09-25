@@ -14,6 +14,6 @@
 
 <div class={"flex flex-col w-full" + (standalone ? " paper-sidebar" : "")}>
     {#each papers as paper, paperIdx}
-        <PaperContainer {paper} {paperIdx} standaloneContainer={standalone} />
+        <PaperContainer {paper} {paperIdx} standaloneContainer={standalone} titleLink />
     {/each}
 </div>

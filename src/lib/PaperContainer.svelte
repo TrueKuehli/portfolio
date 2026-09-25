@@ -11,8 +11,9 @@
         paper: Paper;
         paperIdx: number;
         standaloneContainer?: boolean;
+        titleLink?: boolean;
     };
-    let {paper, paperIdx, standaloneContainer = true}: Props = $props();
+    let {paper, paperIdx, standaloneContainer = true, titleLink = false}: Props = $props();
 
     let videoUrl = $derived(paper.thumbnail.video?.startsWith('.')
         ? videoUrls[`/src/lib/data/papers/${paper.thumbnail.video.slice(2)}`]?.default
@@ -131,7 +132,13 @@
         {/if}
 
         <div class="w-full md:flex-1/2">
-            <h1 class="text-2xl font-bold">{paper.title}</h1>
+            <h1 class="text-2xl font-bold">
+                {#if titleLink}
+                    <a href={`/paper/${paper.id}`} class="link hover:underline">{paper.title}</a>
+                {:else}
+                    {paper.title}
+                {/if}
+            </h1>
             <div class="py-6">
                 <div class={"flex flex-wrap gap-2 "
                         + (paperIdx % 2 === 0 ? "" : "md:justify-end")
