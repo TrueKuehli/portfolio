@@ -134,7 +134,7 @@
         <div class="w-full md:flex-1/2">
             <h1 class="text-2xl font-bold">
                 {#if titleLink}
-                    <a href={`/paper/${paper.id}`} class="link hover:underline">{paper.title}</a>
+                    <a href={`/paper/${paper.id}`} class="link no-underline hover:underline">{paper.title}</a>
                 {:else}
                     {paper.title}
                 {/if}
