@@ -32,7 +32,7 @@
                 <li>
                     <a href="/research"><Library /> Research</a>
                     <ul class="p-2">
-                        {#each categories as category}
+                        {#each categories as category (category.name)}
                             <li>
                                 <a href={"/research/" + encodeURIComponent(category.name.toLowerCase())}>
                                     <category.icon />
