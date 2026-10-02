@@ -6,6 +6,18 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Timon Scholz is a PhD student at the Computer Graphics Lab of TU Braunschweig, Germany. His research focuses on Novel View Synthesis and Perception." />
+		<script>
+			// Applies a stored theme override before first paint to avoid a wrong-theme flash
+			// Keep in sync with src/lib/theme.svelte.ts.
+			(() => {
+				const stored = localStorage.getItem('theme');
+				if (stored === 'dark') {
+					document.documentElement.dataset.theme = 'dracula';
+				} else if (stored === 'light') {
+					document.documentElement.dataset.theme = 'fantasy';
+				}
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

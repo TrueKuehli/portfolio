@@ -1,6 +1,4 @@
 <script lang="ts">
-    import {onMount} from "svelte";
-
     import Library from '@lucide/svelte/icons/library';
     import Info from '@lucide/svelte/icons/info';
     import House from '@lucide/svelte/icons/house';
@@ -9,33 +7,15 @@
     import Sun from '@lucide/svelte/icons/sun';
 
     import categories from "./data/categories";
+    import {theme} from "$lib/theme.svelte.js";
 
-    let isModeSwitched = false;
-    let isDarkModeDefault = false;
-
-    onMount(() => {
-        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        isDarkModeDefault = darkModeMediaQuery.matches;
-
-        darkModeMediaQuery.addEventListener('change', (event) => {
-            isDarkModeDefault = event.matches;
-        });
-
-        const preferredTheme = localStorage.getItem('theme');
-        if (preferredTheme) {
-            if (preferredTheme === 'dark' && !isDarkModeDefault) {
-                isModeSwitched = true;
-            } else if (preferredTheme === 'light' && isDarkModeDefault) {
-                isModeSwitched = true;
-            }
-            // Otherwise no switch is necessary
+    const handleModeSwitch = (event: Event) => {
+        const input = event.currentTarget as HTMLInputElement;
+        if (input.checked) {
+            theme.set(theme.current === 'dark' ? 'light' : 'dark');
+        } else {
+            theme.followSystem();
         }
-    });
-
-    const updatePreferredTheme = () => {
-        const theme = isModeSwitched ? (isDarkModeDefault ? 'light' : 'dark')
-            : (isDarkModeDefault ? 'dark' : 'light');
-        localStorage.setItem('theme', theme);
     };
 </script>
 
@@ -69,16 +49,18 @@
     <div class="navbar-center hidden md:inline-flex">
         <a href="/" class="text-xl select-none font-semibold">
             <img src="/favicon.svg" alt="Favicon"
-                 class={'h-10 w-10 inline-block' + ((isDarkModeDefault !== isModeSwitched) ? ' invert' : '')} />
+                 class={'h-10 w-10 inline-block' + (theme.current === 'dark' ? ' invert' : '')} />
             Timon Scholz
         </a>
     </div>
     <div class="navbar-end inline-flex grow justify-self-end">
         <label id="theme-switch" class="toggle toggle-lg text-primary" aria-label="Theme Switch">
-            <input class="theme-controller" value={isDarkModeDefault ? "fantasy" : "dracula"}
-                   type="checkbox" bind:checked={isModeSwitched} on:change={updatePreferredTheme} aria-labelledby="theme-switch" />
+            <input type="checkbox"
+                   checked={theme.override !== null}
+                   on:change={handleModeSwitch}
+                   aria-labelledby="theme-switch" />
 
-            {#if isDarkModeDefault}
+            {#if theme.systemPrefersDark}
                 <Moon size={20} />
                 <Sun size={20} />
             {:else}
