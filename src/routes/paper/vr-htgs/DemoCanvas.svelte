@@ -37,8 +37,8 @@
         }
 
         // Ensure canvas has the correct size
-        const width = Math.floor(canvasWidth);
-        const height = Math.floor(canvasHeight);
+        const width = Math.floor(canvasWidth) * (window.devicePixelRatio || 1);
+        const height = Math.floor(canvasHeight) * (window.devicePixelRatio || 1);
         if (width != canvasElement.width || height != canvasElement.height) {
             canvasElement.width = width;
             canvasElement.height = height;
@@ -87,8 +87,8 @@
         gl.uniform1i(glProgramInfo.uniformLocations.maskRightSampler, 2);
 
         // Bind uniforms
-        gl.uniform2f(glProgramInfo.uniformLocations.mousePosition, mousePosition.x, mousePosition.y);
-        gl.uniform2f(glProgramInfo.uniformLocations.canvasSize, canvasWidth, canvasHeight);
+        gl.uniform2f(glProgramInfo.uniformLocations.mousePosition, mousePosition.x * (window.devicePixelRatio || 1), mousePosition.y * (window.devicePixelRatio || 1));
+        gl.uniform2f(glProgramInfo.uniformLocations.canvasSize, width, height);
         gl.uniform1i(glProgramInfo.uniformLocations.drawMousePosition, drawMousePosition ? 1 : 0);
         gl.uniform1i(glProgramInfo.uniformLocations.drawTileGrid, drawTileGrid ? 1 : 0);
         gl.uniform1i(glProgramInfo.uniformLocations.enableVRView, enableVRView ? 1 : 0);
@@ -121,6 +121,20 @@
     });
 </script>
 
+<style lang="css">
+    .canvas-dpi {
+        @media screen and (min-resolution: 2dppx) {
+            min-width: 240px;
+        }
+    }
+
+    .controls-dpi {
+        @media screen and (min-resolution: 2dppx) {
+            min-width: 240px;
+        }
+    }
+</style>
+
 {#if pointerCoarse}
     <div class="alert mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current inline text-warning" fill="none" viewBox="0 0 24 24">
@@ -131,12 +145,12 @@
 {/if}
 
 <div class="flex flex-auto md:flex-row flex-col w-full max-w-7xl">
-    <div class="w-full flex-auto aspect-video m-2 relative" bind:clientWidth={canvasWidth} bind:clientHeight={canvasHeight}>
-        <canvas class="aspect-video absolute w-full" bind:this={canvasElement} onmousemove={(e) => mousePosition = { x: e.offsetX, y: canvasHeight - e.offsetY }}>
+    <div class="w-full flex-auto aspect-video m-0 md:m-2 relative h-fit mt-auto mb-auto min-w-[480px] canvas-dpi" bind:clientWidth={canvasWidth} bind:clientHeight={canvasHeight}>
+        <canvas class="aspect-video absolute w-full pb-4 md:pb-0" bind:this={canvasElement} onmousemove={(e) => mousePosition = { x: e.offsetX, y: canvasHeight - e.offsetY }}>
             Your browser does not support the HTML5 canvas tag.
         </canvas>
     </div>
-    <div class="flex flex-col controls flex-1/3 bg-base-200 rounded-lg p-4 min-w-72">
+    <div class="flex flex-col controls flex-1/3 bg-base-200 rounded-lg p-4 min-w-[480px] controls-dpi">
         <h1 class="font-bold text-xl text-center mb-2">Controls</h1>
         <button class="btn btn-md btn-primary px-3 h-8" onclick={() => videoPaused = !videoPaused} disabled={!videoReady}>
             {#if !videoReady}
@@ -148,7 +162,7 @@
             {/if}
         </button>
 
-        <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+        <fieldset class="fieldset bg-base-100 border-base-300 rounded-box max-w-64 border p-4">
             <legend class="fieldset-legend">Render options</legend>
             <label class="label">
                 <input type="checkbox" class="toggle" bind:checked={drawMousePosition} />
