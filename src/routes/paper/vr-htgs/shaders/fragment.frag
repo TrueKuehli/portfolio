@@ -12,10 +12,10 @@ const mediump float tileWidth = 16.0;
 const mediump float tileHeight = 16.0;
 const mediump float tileWidthSmall = 8.0;
 const mediump float tileHeightSmall = 8.0;
-const mediump float foveaRadiusTiles = 4.5;
-const mediump float foveaRadiusPixels = foveaRadiusTiles * tileWidth;
-const mediump float blendedRadiusTiles = 7.5;
-const mediump float blendedRadiusPixels = blendedRadiusTiles * tileWidth;
+const mediump float foveaRadiusTilesBase = 7.5;
+const mediump float foveaRadiusPixelsBase = foveaRadiusTilesBase * tileWidth;
+const mediump float blendedRadiusTilesBase = 11.5;
+const mediump float blendedRadiusPixelsBase = blendedRadiusTilesBase * tileWidth;
 
 const mediump float mouseDotRadius = 6.0;
 const mediump vec4 mouseDotColor = vec4(0.8, 0.475, 0.655, 1.0);
@@ -76,16 +76,21 @@ mediump vec4 samplePeripheryColor(highp vec2 mappedTextureCoord) {
 void main() {
     highp vec2 mappedCanvasSize = canvasSize;
     highp vec2 mappedTextureCoord = textureCoord;
-    if (enableVRView) mappedCanvasSize.x /= 2.0;
+    if (enableVRView) mappedCanvasSize.x = ceil(canvasSize.x / 2.0);
     if (enableVRView) mappedTextureCoord.x = (gl_FragCoord.x > mappedCanvasSize.x ? 0.2 : 0.30) + 0.5 * fract(2.0 * textureCoord.x);
     mediump vec2 tileCoordinates = floor((vec2(0, canvasSize.y) - mod(gl_FragCoord.xy, mappedCanvasSize)) / vec2(tileWidth, tileHeight));
     mediump vec2 tilePixelCoordinates = mod((vec2(0, canvasSize.y) - mod(gl_FragCoord.xy, mappedCanvasSize)), vec2(tileWidth, tileHeight));
     mediump vec2 tileSmallPixelCoordinates = mod((vec2(0, canvasSize.y) - mod(gl_FragCoord.xy, mappedCanvasSize)), vec2(tileWidthSmall, tileHeightSmall));
     mediump vec2 mousePositionTiles = floor((vec2(0, canvasSize.y) - mod(mousePosition, mappedCanvasSize)) / vec2(tileWidth, tileHeight));
 
+    highp float foveaRadiusTiles = foveaRadiusTilesBase * (mappedCanvasSize.x / 1280.0);
+    highp float foveaRadiusPixels = foveaRadiusPixelsBase * (mappedCanvasSize.x / 1280.0);
+    highp float blendedRadiusTiles = blendedRadiusTilesBase * (mappedCanvasSize.x / 1280.0);
+    highp float blendedRadiusPixels = blendedRadiusPixelsBase * (mappedCanvasSize.x / 1280.0);
+
     // Hide offscreen tiles in VR mode
     if (enableVRView) {
-        highp vec2 mappedFragCoord = vec2(mod(gl_FragCoord.x, canvasSize.x / 2.0), canvasSize.y - gl_FragCoord.y);
+        highp vec2 mappedFragCoord = vec2(mod(gl_FragCoord.x, ceil(canvasSize.x / 2.0)), canvasSize.y - gl_FragCoord.y);
         highp vec2 mappedMaskCoord = (floor(mappedFragCoord / vec2(tileWidth, tileHeight)) + vec2(0.5, 0.5)) * vec2(tileWidth, tileHeight) / mappedCanvasSize;
         mappedMaskCoord.y = 1.0 - mappedMaskCoord.y;
 
