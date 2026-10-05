@@ -7,6 +7,8 @@
     import { getDemoProgram, destroyDemoProgram } from "./shaders";
     import type { ShaderProgramData } from "./shaders";
 
+    let pointerCoarse = $state(false);
+
     let canvasElement: HTMLCanvasElement;
     let videoElement: HTMLVideoElement;
     let videoReady: boolean = $state(true);
@@ -104,6 +106,9 @@
     }
 
     $effect(() => {
+        // Determine if using touchscreen to show warning
+        pointerCoarse = window.matchMedia("(pointer: coarse)").matches;
+
         // Initialize WebGL
         gl = canvasElement.getContext('webgl2');
         if (!gl) return;
@@ -115,6 +120,15 @@
         return () => destroyDemoProgram(gl, glProgramInfo);  // Cleanup on unmount
     });
 </script>
+
+{#if pointerCoarse}
+    <div class="alert mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current inline text-warning" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span>Experience on mobile may be suboptimal, please use a mouse or touchpad if available.</span>
+    </div>
+{/if}
 
 <div class="flex flex-auto md:flex-row flex-col w-full max-w-7xl">
     <div class="w-full flex-auto aspect-video m-2 relative" bind:clientWidth={canvasWidth} bind:clientHeight={canvasHeight}>
