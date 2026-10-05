@@ -3,3 +3,9 @@
 @plugin "daisyui" {
     themes: fantasy --default, dracula --prefersdark;
 }
+
+* {
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-duration: 0.2s;
+}
