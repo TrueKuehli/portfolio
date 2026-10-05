@@ -85,8 +85,8 @@ void main() {
 
     highp float foveaRadiusTiles = foveaRadiusTilesBase * (mappedCanvasSize.x / 1280.0);
     highp float foveaRadiusPixels = foveaRadiusPixelsBase * (mappedCanvasSize.x / 1280.0);
-    highp float blendedRadiusTiles = blendedRadiusTilesBase * (mappedCanvasSize.x / 1280.0);
-    highp float blendedRadiusPixels = blendedRadiusPixelsBase * (mappedCanvasSize.x / 1280.0);
+    highp float blendedRadiusTiles = max(blendedRadiusTilesBase * (mappedCanvasSize.x / 1280.0), foveaRadiusTiles + 3.0);
+    highp float blendedRadiusPixels = max(blendedRadiusPixelsBase * (mappedCanvasSize.x / 1280.0), foveaRadiusPixels + 3.0 * tileWidth);
 
     // Hide offscreen tiles in VR mode
     if (enableVRView) {
