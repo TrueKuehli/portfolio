@@ -342,7 +342,8 @@ papers:
       Code: null
     thumbnail:
       img: "./vr-htgs/teaser-small.jpg"
-      banner: "./vr-htgs/teaser.jpg"
+      banner: "./vr-htgs/teaser.png"
+      banner_dark: "./vr-htgs/teaser-dark.png"
       video: "./vr-htgs/teaser_20s.mp4"
       alt: "Illustration of foveated rendering in of a Gaussian Splatting scene using VR-HTGS, showing inhomogeneous 
             tile layouts that dynamically adjust to the user's gaze position."

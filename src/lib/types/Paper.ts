@@ -21,6 +21,7 @@ export type Paper = {
         // Relative to /lib/data/papers/... (as ./...), or /public/... (as /...) or absolute URL
         img: string;
         banner?: string;
+        banner_dark?: string;
         video?: string;
         alt: string;
     }

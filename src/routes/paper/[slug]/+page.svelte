@@ -2,6 +2,7 @@
     import AuthorsBlock from "$lib/AuthorsBlock.svelte";
     import Copy from "@lucide/svelte/icons/copy"
     import Download from "@lucide/svelte/icons/download";
+    import {theme} from "$lib/theme.svelte.js";
 
     const resourceUrls = import.meta.glob("$lib/data/papers/**/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}",
         { eager: true, query: '?enhanced' }) as Record<string, { default: string }>;
@@ -12,7 +13,8 @@
 
     let { data } = $props();
     let paper = $derived(data.paper);
-    let paperBanner = $derived(data.paper.thumbnail.banner || data.paper.thumbnail.img);
+    let paperBanner = $derived(paper.thumbnail.banner || paper.thumbnail.img);
+    let paperBannerDark = $derived(paper.thumbnail.banner_dark || null);
 
     let bibTexUrl = $derived(paper.bibtex ?
         (paper.bibtex.startsWith('.')
@@ -36,11 +38,20 @@
 
 <div class={"flex flex-col w-full paper-sidebar pb-12"}>
     <div class="flex w-full max-h-52 justify-center">
+
         {#if paperBanner}
             <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paperBanner.slice(2)}`]?.default}
-                 class="m-1 mb-5 p-1 max-h-46 w-auto text-center bg-center"
+                 class={"m-1 mb-5 p-1 max-h-46 w-auto text-center bg-center"
+                        + ((paperBannerDark && theme.current === 'dark') ? ' hidden' : '')}
                  alt={paper.thumbnail.alt ? paper.thumbnail.alt : `Preview image for paper ${paper.title}`}
                  loading="eager"/>
+        {/if}
+        {#if paperBannerDark}
+            <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paperBannerDark.slice(2)}`]?.default}
+                          class={"m-1 mb-5 p-1 max-h-46 w-auto text-center bg-center"
+                                 + (!paperBanner || theme.current === 'dark' ? '' : ' hidden')}
+                          alt={paper.thumbnail.alt ? paper.thumbnail.alt : `Preview image for paper ${paper.title}`}
+                          loading="eager"/>
         {/if}
     </div>
     <div class="w-full flex flex-col items-center justify-center px-4">
