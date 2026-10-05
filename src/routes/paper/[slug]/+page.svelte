@@ -38,7 +38,6 @@
 
 <div class={"flex flex-col w-full paper-sidebar pb-12"}>
     <div class="flex w-full max-h-52 justify-center">
-
         {#if paperBanner}
             <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paperBanner.slice(2)}`]?.default}
                  class={"m-1 mb-5 p-1 max-h-46 w-auto text-center bg-center"
