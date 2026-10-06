@@ -62,6 +62,7 @@
     };
 </script>
 
+<!-- eslint-disable svelte/no-at-html-tags -- all {@html} renders trusted build-time content from papers.yaml and local SVG assets (not user input) -->
 
 {#snippet author(name: string, last: boolean)}
     {#if name === PORTFOLIO_OWNER}
@@ -151,7 +152,7 @@
                     {/if}
 
                     {#if paper.keywords && paper.keywords.length > 0}
-                        {#each paper.keywords as keyword}
+                        {#each paper.keywords as keyword (keyword)}
                             <span class="badge badge-neutral badge-ghost">{keyword}</span>
                         {/each}
                     {/if}
@@ -168,7 +169,7 @@
 
                 <br>
 
-                {#each paper.authors as author, authorIdx}
+                {#each paper.authors as author, authorIdx (author.name)}
                 <span class="mr-0.5">
                     {@render authorLinkAffilliation(author.name, author.link, author.affiliation, authorIdx === paper.authors.length - 1)}
                 </span>
@@ -187,7 +188,7 @@
             }>
                 <a class="btn btn-primary" href={`/paper/${paper.id}`}>Project Page</a>
                 {#if paper.links}
-                    {#each Object.entries(paper.links) as [name, link]}
+                    {#each Object.entries(paper.links) as [name, link] (name)}
                         <a class="btn btn-soft btn-secondary" href={link} target="_blank">
                             {#if link === null}{name} (Coming Soon){:else}{name}{/if}
                         </a>

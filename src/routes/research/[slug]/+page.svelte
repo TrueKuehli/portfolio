@@ -5,8 +5,8 @@
 </script>
 
 
-<div class={"flex flex-col w-full paper-sidebar"}>
-    {#each data.filteredPapers as paper, paperIdx}
+<div class="flex flex-col w-full paper-sidebar">
+    {#each data.filteredPapers as paper, paperIdx (paper.id)}
         <PaperContainer {paper} {paperIdx} />
     {/each}
 </div>

@@ -36,8 +36,10 @@
     };
 </script>
 
+<!-- eslint-disable svelte/no-at-html-tags -- all {@html} renders trusted build-time content from papers.yaml (not user input) -->
 
-<div class={"flex flex-col w-full paper-sidebar pb-12"}>
+
+<div class="flex flex-col w-full paper-sidebar pb-12">
     <div class="flex w-full max-h-64 justify-center">
         {#if paperBanner}
             <enhanced:img src={resourceUrls[`/src/lib/data/papers/${paperBanner.slice(2)}`]?.default}
@@ -70,15 +72,15 @@
             <AuthorsBlock authors={data.paper.authors} />
         </article>
 
-        <div class={"flex gap-x-2 gap-y-3 flex-wrap mt-8 mb-8 justify-center"}>
+        <div class="flex gap-x-2 gap-y-3 flex-wrap mt-8 mb-8 justify-center">
             {#if paper.links}
-                {#each Object.entries(paper.links) as [name, link]}
+                {#each Object.entries(paper.links) as [name, link] (name)}
                     <a class="btn btn-md lg:btn-lg btn-soft btn-secondary px-8" href={link} target="_blank">
                         {#if link == null}{name} (Coming Soon){:else}{name}{/if}
                     </a>
                 {/each}
                 {#if bibTex}
-                    <a class="btn btn-md lg:btn-lg btn-soft btn-secondary px-8" href={'#citation'}>
+                    <a class="btn btn-md lg:btn-lg btn-soft btn-secondary px-8" href="#citation">
                         BibTeX
                     </a>
                 {/if}

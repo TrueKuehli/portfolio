@@ -32,8 +32,9 @@
     });
 </script>
 
+<!-- eslint-disable svelte/no-at-html-tags -- all {@html} renders trusted build-time content from papers.yaml (not user input) -->
 
-<div class={"flex flex-col w-full paper-sidebar pb-12"}>
+<div class="flex flex-col w-full paper-sidebar pb-12">
     <div class="flex w-full max-h-52 relative justify-center overflow-clip hidden" bind:this={bannerElement}>
         {@html bannerSvg}
     </div>
@@ -66,15 +67,15 @@
 <!--                {/if}-->
 <!--            </div>-->
 
-            <div class={"flex gap-x-2 gap-y-3 flex-wrap mt-8 justify-center"}>
+            <div class="flex gap-x-2 gap-y-3 flex-wrap mt-8 justify-center">
                 {#if paper.links}
-                    {#each Object.entries(paper.links) as [name, link]}
+                    {#each Object.entries(paper.links) as [name, link] (name)}
                         <a class="btn btn-md lg:btn-lg btn-soft btn-secondary px-8" href={link} target="_blank">
                             {name}
                         </a>
                     {/each}
                 {/if}
-                <a class="btn btn-md lg:btn-lg btn-soft btn-secondary px-8" href={'#citation'}>
+                <a class="btn btn-md lg:btn-lg btn-soft btn-secondary px-8" href="#citation">
                     BibTeX
                 </a>
             </div>
