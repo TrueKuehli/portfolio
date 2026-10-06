@@ -100,7 +100,6 @@ papers:
     links:
       Video: "https://youtu.be/4qd1iyRo3VQ"
       Paper: "https://diglib.eg.org/handle/10.2312/vmv20231239"
-    # TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
       img: "./underwater/teaser.jpg"
       video: "./underwater/underwater-preview.mp4"
@@ -157,7 +156,6 @@ papers:
     links:
       Video: "https://youtu.be/w3GO86Fq8Rk"
       Paper: "https://dl.acm.org/doi/10.1145/3675231.3675234"
-      # TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
       img: "./vel-perception/teaser.png"
       video: "./vel-perception/velocity-preview.mp4"
@@ -223,7 +221,6 @@ papers:
       Video: "https://www.youtube.com/watch?v=NSpptS38uL0"
       Paper: "https://arxiv.org/abs/2406.10078"
       Code: "https://github.com/MoritzKappel/D-NPC"
-# TODO:      Slides: "https://example.com/slides1.pdf"
     thumbnail:
       img: "./dnpc/teaser.png"
       video: "./dnpc/dnpc-preview.mp4"
