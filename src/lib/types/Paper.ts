@@ -18,7 +18,7 @@ export type Paper = {
         [key: string]: string;
     }
     thumbnail: {
-        // Relative to /lib/data/papers/... (as ./...), or /public/... (as /...) or absolute URL
+        // Relative to src/lib/data/papers/... (as ./...), a static/ file (as /...), or an absolute URL
         img: string;
         banner?: string;
         banner_dark?: string;
