@@ -150,6 +150,11 @@
         {#if !videoStarted}
             <img src={DemoVideoThumb} class="absolute inset-0 h-full w-full"
                  alt="Static preview of the demo video showing foveated rendering of a Gaussian Splatting scene with VR-HTGS" />
+            <div class="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-black/75">
+                    <Play size={28} fill="currentColor" class="text-white" />
+                </div>
+            </div>
         {/if}
         <canvas class="aspect-video absolute w-full" bind:this={canvasElement}
                 onmousemove={(e) => mousePosition = { x: e.offsetX, y: canvasHeight - e.offsetY }}
