@@ -144,13 +144,13 @@
     </div>
 {/if}
 
-<div class="flex flex-auto md:flex-row flex-col w-full max-w-7xl">
-    <div class="w-full flex-auto aspect-video m-0 md:m-2 relative h-fit mt-auto mb-auto max-md:min-w-[480px] canvas-dpi self-center" bind:clientWidth={canvasWidth} bind:clientHeight={canvasHeight}>
-        <canvas class="aspect-video absolute w-full pb-4 md:pb-0" bind:this={canvasElement} onmousemove={(e) => mousePosition = { x: e.offsetX, y: canvasHeight - e.offsetY }}>
+<div class="flex flex-auto lg:flex-row flex-col w-full max-w-7xl">
+    <div class="w-full flex-auto aspect-video m-0 lg:m-2 relative h-fit lg:mt-auto lg:mb-auto max-lg:min-w-[480px] canvas-dpi self-center mb-4" bind:clientWidth={canvasWidth} bind:clientHeight={canvasHeight}>
+        <canvas class="aspect-video absolute w-full" bind:this={canvasElement} onmousemove={(e) => mousePosition = { x: e.offsetX, y: canvasHeight - e.offsetY }}>
             Your browser does not support the HTML5 canvas tag.
         </canvas>
     </div>
-    <div class="flex flex-col controls flex-1/3 bg-base-200 rounded-lg p-4 max-md:min-w-[480px] controls-dpi">
+    <div class="flex flex-col controls flex-1/3 bg-base-200 rounded-lg p-4 max-lg:min-w-[480px] controls-dpi">
         <h1 class="font-bold text-xl text-center mb-2">Controls</h1>
         <button class="btn btn-md btn-primary px-3 h-8" onclick={() => videoPaused = !videoPaused} disabled={!videoReady}>
             {#if !videoReady}
@@ -162,7 +162,7 @@
             {/if}
         </button>
 
-        <fieldset class="fieldset bg-base-100 border-base-300 rounded-box max-w-64 border p-4 mt-2 min-w-60 max-md:self-center">
+        <fieldset class="fieldset bg-base-100 border-base-300 rounded-box max-w-64 border p-4 mt-2 min-w-60 max-lg:self-center">
             <legend class="fieldset-legend">Render options</legend>
             <label class="label">
                 <input type="checkbox" class="toggle" bind:checked={drawMousePosition} />
