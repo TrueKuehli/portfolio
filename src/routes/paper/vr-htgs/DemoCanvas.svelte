@@ -3,6 +3,7 @@
     import Pause from "@lucide/svelte/icons/pause"
     import LoaderCircle from "@lucide/svelte/icons/loader-circle";
     import DemoVideo from "$lib/data/papers/vr-htgs/bicycle.mp4";
+    import DemoVideoThumb from "$lib/data/papers/vr-htgs/bicycle-thumb.jpg";
 
     import { getDemoProgram, destroyDemoProgram } from "./shaders";
     import type { ShaderProgramData } from "./shaders";
@@ -146,7 +147,14 @@
 
 <div class="flex flex-auto lg:flex-row flex-col w-full max-w-7xl">
     <div class="w-full flex-auto aspect-video m-0 lg:m-2 relative h-fit lg:mt-auto lg:mb-auto max-lg:min-w-[480px] canvas-dpi self-center mb-4" bind:clientWidth={canvasWidth} bind:clientHeight={canvasHeight}>
-        <canvas class="aspect-video absolute w-full" bind:this={canvasElement} onmousemove={(e) => mousePosition = { x: e.offsetX, y: canvasHeight - e.offsetY }}>
+        {#if !videoStarted}
+            <img src={DemoVideoThumb} class="absolute inset-0 h-full w-full"
+                 alt="Static preview of the demo video showing foveated rendering of a Gaussian Splatting scene with VR-HTGS" />
+        {/if}
+        <canvas class="aspect-video absolute w-full" bind:this={canvasElement}
+                onmousemove={(e) => mousePosition = { x: e.offsetX, y: canvasHeight - e.offsetY }}
+                onclick={() => !videoStarted && (videoPaused = false)}
+        >
             Your browser does not support the HTML5 canvas tag.
         </canvas>
     </div>
