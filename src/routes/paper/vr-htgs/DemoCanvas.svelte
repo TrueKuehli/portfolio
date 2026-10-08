@@ -19,7 +19,7 @@
     let canvasHeight: number = $state(0);
 
     let mousePosition: { x: number; y: number } = $state({ x: 0, y: 0 });
-    let drawMousePosition: boolean = $state(false);
+    let drawMousePosition: boolean = $state(true);
     let drawTileGrid: boolean = $state(false);
     let enableVRView: boolean = $state(false);
 
