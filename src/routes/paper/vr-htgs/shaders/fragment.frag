@@ -146,30 +146,33 @@ void main() {
         }
     }
 
-    // Draw fovea
-    if (distance(tileCoordinates, mousePositionTiles) < foveaRadiusTiles) {
-        gl_FragColor = texture2D(textureSampler, mappedTextureCoord);
-        return;
+    // Render scene with foveated rendering
+    {
+        // Draw fovea
+        if (distance(tileCoordinates, mousePositionTiles) < foveaRadiusTiles) {
+            gl_FragColor = texture2D(textureSampler, mappedTextureCoord);
+            return;
+        }
+
+        // Draw blended region
+        if (distance(tileCoordinates, mousePositionTiles) < blendedRadiusTiles) {
+            // Get fovea color & periphery colors
+            mediump vec4 foveaColor = texture2D(textureSampler, mappedTextureCoord);
+            mediump vec4 peripheryColor = samplePeripheryColor(mappedTextureCoord);
+
+            // Determine interpolation factor
+            highp float distanceFromGaze = distance(mod(mousePosition, mappedCanvasSize), mod(gl_FragCoord.xy, mappedCanvasSize));
+            highp float blend_factor = clamp(
+                (distanceFromGaze - foveaRadiusPixels - tileWidthSmall) / (blendedRadiusPixels - foveaRadiusPixels - tileWidth),
+                0.0, 1.0
+            );
+
+            // Write interpolated color
+            gl_FragColor = mix(foveaColor, peripheryColor, blend_factor);
+            return;
+        }
+
+        // Draw periphery
+        gl_FragColor = samplePeripheryColor(mappedTextureCoord);
     }
-
-    // Draw blended region
-    if (distance(tileCoordinates, mousePositionTiles) < blendedRadiusTiles) {
-        // Get fovea color & periphery colors
-        mediump vec4 foveaColor = texture2D(textureSampler, mappedTextureCoord);
-        mediump vec4 peripheryColor = samplePeripheryColor(mappedTextureCoord);
-
-        // Determine interpolation factor
-        highp float distanceFromGaze = distance(mousePosition, vec2(gl_FragCoord));
-        highp float blend_factor = clamp(
-            (distanceFromGaze - foveaRadiusPixels - tileWidthSmall) / (blendedRadiusPixels - foveaRadiusPixels - tileWidth),
-            0.0, 1.0
-        );
-
-        // Write interpolated color
-        gl_FragColor = mix(foveaColor, peripheryColor, blend_factor);
-        return;
-    }
-
-    // Draw periphery
-    gl_FragColor = samplePeripheryColor(mappedTextureCoord);
 }
